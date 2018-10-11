@@ -4,7 +4,7 @@ namespace AvalonComposerUtil;
 
 class Signature
 {
-    public static function checkMd5Sign($params_arr, $key)
+    public static function getMd5Sign($params_arr, $key)
     {
         $key_arr = new MyArray(array_keys($params_arr));
         //排除从url中获取的XDEBUG_SESSION_START参数
