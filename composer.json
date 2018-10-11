@@ -14,7 +14,7 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "tlanyan\\": "src/"
+      "AvalonComposerUtil\\MyArray\\": "src/MyArray/MyArray"
     }
   }
 }
