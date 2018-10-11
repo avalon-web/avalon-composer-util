@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace AvalonComposerUtil;
 
 use Closure;
 
