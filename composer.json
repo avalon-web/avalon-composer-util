@@ -1,13 +1,20 @@
 {
-    "name": "anshi/avalon-composer-util",
-    "authors": [
-        {
-            "name": "avalon-web",
-            "email": "lvyangxu@avalongames.cn"
-        }
-    ],
-    "require": {
-        "php": ">=7.2",
-        "guzzlehttp/guzzle": "^6.3"
+  "name": "anshi/avalon-composer-util",
+  "type": "library",
+  "authors": [
+    {
+      "name": "avalon-web",
+      "email": "lvyangxu@avalongames.cn"
     }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "tlanyan\\": "src/"
+    }
+  }
 }
