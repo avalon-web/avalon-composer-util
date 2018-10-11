@@ -51,8 +51,7 @@ class Http
         $status = $res->getStatusCode();
         if ((int)floor($status / 100) !== 2) {
             throw new Exception($res);
-        } else {
-            return ["status" => $status, "message" => $res];
         }
+        return ["status" => $status, "message" => $res];
     }
 }
