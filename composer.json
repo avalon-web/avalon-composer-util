@@ -11,10 +11,11 @@
     "php": ">=7.2",
     "guzzlehttp/guzzle": "^6.3"
   },
+  "license": "MIT",
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "AvalonComposerUtil\\MyArray\\": "src/MyArray/MyArray"
+      "AvalonComposerUtil\\": "src/"
     }
   }
 }
