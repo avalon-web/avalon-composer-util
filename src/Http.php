@@ -52,6 +52,6 @@ class Http
         if ((int)floor($status / 100) !== 2) {
             throw new Exception($res);
         }
-        return ["status" => $status, "message" => $res];
+        return ["status" => $status, "message" => $res->getBody()];
     }
 }
