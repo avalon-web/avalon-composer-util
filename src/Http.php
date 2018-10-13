@@ -49,9 +49,10 @@ class Http
             ]
         );
         $status = $res->getStatusCode();
+        $message = json_decode($res->getBody()->getContents());
         if ((int)floor($status / 100) !== 2) {
             throw new Exception($res);
         }
-        return ["status" => $status, "message" => $res->getBody()];
+        return ["status" => $status, "message" => $message];
     }
 }
