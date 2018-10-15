@@ -7,24 +7,26 @@ class RegexParam
     //正则验证参数
     public static function check($paramsArr, $request)
     {
-        $arr = $request->post();
-        $invalidParam = null;
-        for ($i = 0; $i < sizeof($paramsArr); $i++) {
-            $d = $paramsArr[$i];
+        $method = $request->getMethod();
+        $arr = $method === "GET" ? $request->query() : $request->post();
+        $paramsArr = new MyArray($paramsArr);
+        //找出不符合要求的参数
+        $findEle = $paramsArr->find(function ($d) use ($arr) {
             ["id" => $id] = $d;
-            //未包含指定的参数
-            if (!array_key_exists($id, $arr)) {
-                $invalidParam = $id;
-                break;
-            }
-            if (!array_key_exists("regex", $d)) {
-                $regex = $d["regex"];
-                //如果包含regex属性,则需要进行正则验证
-                if (!preg_match($regex, $arr[$id])) {
-                    $invalidParam = $id;
+            //判断参数是否存在
+            if (array_key_exists($id, $arr)) {
+                if (array_key_exists("regex", $d)) {
+                    $regex = $d["regex"];
+                    //如果包含regex属性,则需要进行正则验证
+                    return !preg_match($regex, $arr[$id]);
+                } else {
+                    //未包含正则,不验证
+                    return false;
                 }
+            } else {
+                return true;
             }
-        }
-        return $invalidParam;
+        });
+        return $findEle;
     }
 }
