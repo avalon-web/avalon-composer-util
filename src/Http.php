@@ -38,20 +38,29 @@ class Http
         return self::request("PUT", $url, $headers, $params, $timeout);
     }
 
-    public static function request($method, $url, $headers = ["Accept" => "application/json; charset=utf-8"], $params, $timeout = 10)
+    public static function request($method, $url, $headers = ["Accept" => "application/json; charset=utf-8"], $params, $timeout = 10, $times = 1)
     {
         $client = new Client();
-        $res = $client->request($method, $url,
-            [
-                "headers" => $headers,
-                "form_params" => $params,
-                "timeout" => $timeout
-            ]
-        );
-        $status = $res->getStatusCode();
-        $message = json_decode($res->getBody()->getContents());
-        if ((int)floor($status / 100) !== 2) {
-            throw new Exception($res);
+        $status = 408;
+        $message = "";
+        try {
+            $res = $client->request($method, $url,
+                [
+                    "headers" => $headers,
+                    "form_params" => $params,
+                    "timeout" => $timeout
+                ]
+            );
+            $status = $res->getStatusCode();
+            $message = json_decode($res->getBody()->getContents());
+            if ((int)floor($status / 100) !== 2) {
+                throw new Exception($res);
+            }
+        } catch (Exception $e) {
+            $times--;
+            if ($times > 0) {
+                return self::request($method, $url, $headers, $params, $timeout, $times);
+            }
         }
         return ["status" => $status, "message" => $message];
     }
