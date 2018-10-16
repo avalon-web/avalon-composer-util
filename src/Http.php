@@ -13,29 +13,29 @@ use Mockery\Exception;
 
 class Http
 {
-    public static function get($url, $headers, $params, $timeout)
+    public static function get($url, $headers, $params, $timeout, $times)
     {
-        return self::request("GET", $url, $headers, $params, $timeout);
+        return self::request("GET", $url, $headers, $params, $timeout, $times);
     }
 
-    public static function post($url, $headers, $params, $timeout)
+    public static function post($url, $headers, $params, $timeout, $times)
     {
-        return self::request("POST", $url, $headers, $params, $timeout);
+        return self::request("POST", $url, $headers, $params, $timeout, $times);
     }
 
-    public static function patch($url, $headers, $params, $timeout)
+    public static function patch($url, $headers, $params, $timeout, $times)
     {
-        return self::request("PATCH", $url, $headers, $params, $timeout);
+        return self::request("PATCH", $url, $headers, $params, $timeout, $times);
     }
 
-    public static function delete($url, $headers, $params, $timeout)
+    public static function delete($url, $headers, $params, $timeout, $times)
     {
-        return self::request("DELETE", $url, $headers, $params, $timeout);
+        return self::request("DELETE", $url, $headers, $params, $timeout, $times);
     }
 
-    public static function put($url, $headers, $params, $timeout)
+    public static function put($url, $headers, $params, $timeout, $times)
     {
-        return self::request("PUT", $url, $headers, $params, $timeout);
+        return self::request("PUT", $url, $headers, $params, $timeout, $times);
     }
 
     public static function request($method, $url, $headers = ["Accept" => "application/json; charset=utf-8"], $params, $timeout = 10, $times = 1)
