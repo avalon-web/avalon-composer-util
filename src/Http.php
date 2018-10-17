@@ -47,6 +47,7 @@ class Http
     {
         $defaultOptions = [
             "headers" => ["Accept" => "application/json; charset=utf-8"],
+            "params" => [],
             "timeout" => 10,
             "times" => 1
         ];
