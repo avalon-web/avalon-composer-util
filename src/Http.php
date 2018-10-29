@@ -57,25 +57,10 @@ class Http
         $status = 408;
         $message = "";
         try {
-            //            $curl_handle = curl_init();
-//            curl_setopt_array($curl_handle, [
-//                CURLOPT_URL => $url,
-//                CURLOPT_CUSTOMREQUEST => $method,
-//                CURLOPT_HEADER => $headers,
-//                CURLOPT_RETURNTRANSFER => true,
-//                CURLOPT_POST => true,
-//                CURLOPT_POSTFIELDS => '{"order_id":"eizotAh9yUwkhody4wj8feCeFCV50plY","is_sandbox":2,"trans_params":"{\"productId\":215,\"version\":\"1.3.0.0\",\"subChannel\":0,\"zone\":0}"}',
-//                CURLOPT_TIMEOUT => $timeout,
-//                CURLOPT_CONNECTTIMEOUT => $timeout,
-//
-//            ]);
-//            $response_json = curl_exec($curl_handle);
-//            $status = curl_getinfo($curl_handle, CURLINFO_HTTP_CODE);
-//            $message = json_decode($response_json);
             $res = $client->request($method, $url,
                 [
                     "headers" => $headers,
-                    "form_params" => $params,
+                    "json" => $params,
                     "timeout" => $timeout
                 ]
             );
