@@ -104,4 +104,10 @@ class MyArray
     {
         usort($this->arr, $callback);
     }
+
+    public function slice($index, $length)
+    {
+        $newArr = array_slice($this->arr, $index, $length);
+        return new MyArray($newArr);
+    }
 }
